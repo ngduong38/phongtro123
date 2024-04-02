@@ -17,6 +17,7 @@ export const getPostsService = () => new Promise(async (resolve, reject) => {
             err: response ? 0 : 1,
             msg: response ? 'OK' : 'Getting posts is failed.',
             response
+            
         })
 
     } catch (error) {

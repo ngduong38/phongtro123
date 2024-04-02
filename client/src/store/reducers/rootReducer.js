@@ -22,7 +22,7 @@ const authConfig = {
 const rootReducer = combineReducers({
     auth: persistReducer(authConfig, authReducer),
     user: userReducer,
-    post: postReducer,
+    post : postReducer,
     app: appReducer
 })
 

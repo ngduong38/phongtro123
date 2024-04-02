@@ -15,7 +15,7 @@ export const getPosts = () => async (dispatch) => {
                 msg: response.data.msg
             })
         }
-
+        
     } catch (error) {
         dispatch({
             type: actionTypes.GET_POSTS,
@@ -23,6 +23,7 @@ export const getPosts = () => async (dispatch) => {
         })
     }
 }
+
 export const getPostsLimit = (query) => async (dispatch) => {
     try {
         const response = await apiGetPostsLimit(query)

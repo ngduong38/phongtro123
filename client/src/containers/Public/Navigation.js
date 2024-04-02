@@ -24,7 +24,25 @@ const Navigation = ({ isAdmin }) => {
                 >
                     Trang chủ
                 </NavLink>
-                {categories?.length > 0 && categories.map(item => {
+                <NavLink
+                    to={`/cho-thue-phong-tro`}
+                    className={({ isActive }) => isActive ? active : notActive}
+                >
+                    Cho thuê phòng trọ
+                </NavLink>
+                <NavLink
+                    to={`/cho-thue-nha`}
+                    className={({ isActive }) => isActive ? active : notActive}
+                >
+                    Cho thuê nhà
+                </NavLink>
+                <NavLink
+                    to={`/cho-thue-can-ho`}
+                    className={({ isActive }) => isActive ? active : notActive}
+                >
+                    Cho thuê căn hộ
+                </NavLink>
+                {/* {categories?.length > 0 && categories.map(item => {
                     return (
                         <div key={item.code} className='h-full flex justify-center items-center' >
                             <NavLink
@@ -35,7 +53,7 @@ const Navigation = ({ isAdmin }) => {
                             </NavLink>
                         </div>
                     )
-                })}
+                })} */}
             </div>
         </div>
     )

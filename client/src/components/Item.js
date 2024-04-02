@@ -3,13 +3,13 @@ import icons from '../ultils/icons'
 import { useNavigate, Link } from 'react-router-dom'
 import { formatVietnameseToString } from '../ultils/Common/formatVietnameseToString'
 
-const indexs = [0, 1, 2, 3]
+
 
 const { GrStar, RiHeartFill, RiHeartLine, BsBookmarkStarFill } = icons
 
 const Item = ({ images, user, title, star, description, attributes, address, id }) => {
+    console.log(typeof(description));
     const [isHoverHeart, setIsHoverHeart] = useState(false)
-
     const handleStar = (star) => {
         let stars = []
         for (let i = 1; i <= +star; i++) stars.push(<GrStar className='star-item' size={18} color='yellow' />)
@@ -18,16 +18,14 @@ const Item = ({ images, user, title, star, description, attributes, address, id 
     }
     return (
         <div className='w-full flex border-t border-orange-600 py-4'>
-            <Link
+            <div
                 to={`chi-tiet/${formatVietnameseToString(title)}/${id}`}
                 className='w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer'
             >
-                {images.length > 0 && images.filter((i, index) => indexs.some(i => i === index))?.map((i, index) => {
-                    return (
-                        <img key={index} src={i} alt="preview" className='w-[47%] h-[120px] object-cover' />
-                    )
-                })}
-                <span className='bg-overlay-70 text-white px-2 rounded-md absolute left-1 bottom-4'>{`${images.length} ảnh`}</span>
+                <img src={"https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/03/27/250a4a5b-ea3e-4c2f-ab8a-239056d53f2b_1711514226.png"} alt="preview" className='w-[200px] h-[120px] object-cover'/>
+                <img src={"https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/03/27/13fb45d4-c52d-4275-b932-6929c378ac12_1711514224.png"} alt="preview" className='w-[200px] h-[120px] object-cover'/> 
+                
+                <span className='bg-overlay-70 text-white px-2 rounded-md absolute left-1 bottom-4'>{`2 ảnh`}</span>
                 <span
                     className='text-white absolute right-5 bottom-1'
                     onMouseEnter={() => setIsHoverHeart(true)}
@@ -35,7 +33,7 @@ const Item = ({ images, user, title, star, description, attributes, address, id 
                 >
                     {isHoverHeart ? <RiHeartFill size={26} color='red' /> : <RiHeartLine size={26} />}
                 </span>
-            </Link>
+            </div>
             <div className='w-3/5'>
                 <div className='flex justify-between gap-4 w-full'>
                     <div className='text-red-600 font-medium'>

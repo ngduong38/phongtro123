@@ -4,20 +4,20 @@ import axios from 'axios'
 export const apiGetPosts = () => new Promise(async (resolve, reject) => {
     try {
         const response = await axiosConfig({
-            method: 'get',
-            url: '/api/v1/post/all',
+            method: "get",
+            url: "http://localhost:5000/api/v1/post/all",
         })
         resolve(response)
-
     } catch (error) {
         reject(error)
     }
 })
+
 export const apiGetPostsLimit = (query) => new Promise(async (resolve, reject) => {
     try {
         const response = await axiosConfig({
             method: 'get',
-            url: `/api/v1/post/limit`,
+            url: `http://localhost:5000/api/v1/post/limit`,
             params: query
         })
         resolve(response)
