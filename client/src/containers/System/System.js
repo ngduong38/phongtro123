@@ -7,7 +7,7 @@ import { Header, Sidebar } from './'
 const System = () => {
     const { isLoggedIn } = useSelector(state => state.auth)
 
-    if (!isLoggedIn) return <Navigate to={`/${path.LOGIN}`} replace={false} />
+    // if (!isLoggedIn) return <Navigate to={`/${path.LOGIN}`} replace={false} />
     return (
         <div className='w-full h-screen flex flex-col items-center'>
             <Header />

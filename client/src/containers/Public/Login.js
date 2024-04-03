@@ -15,7 +15,8 @@ const Login = () => {
     const [payload, setPayload] = useState({
         phone: '',
         password: '',
-        name: ''
+        name: '',
+        confirmPassword: ''
     })
     useEffect(() => {
         setIsRegister(location.state?.flag)
@@ -61,7 +62,7 @@ const Login = () => {
                     }
                     break;
                 case 'phone':
-                    if (!+item[1]) {
+                    if (item[1].length < 10 || item[1].length > 12) {
                         setInvalidFields(prev => [...prev, {
                             name: item[0],
                             message: 'Số điện thoại không hợp lệ.'
@@ -69,7 +70,15 @@ const Login = () => {
                         invalids++
                     }
                     break
-
+                case 'confirmPassword':
+                    if (payload.confirmPassword !== payload.password) {
+                        setInvalidFields(prev => [...prev, {
+                            name: item[0],
+                            message: "Sai mật khẩu"
+                        }])
+                        invalids++
+                    }
+                    break;
                 default:
                     break;
             }
@@ -107,6 +116,33 @@ const Login = () => {
                         keyPayload={'password'}
                         type='password'
                     />
+                     
+                     
+                    
+                    {isRegister && <InputForm
+                        setInvalidFields={setInvalidFields}
+                        invalidFields={invalidFields}
+                        label={'XÁC NHẬN MẬT KHẨU'}
+                        value={payload.confirmPassword}
+                        setValue={setPayload}
+                        keyPayload={'confirmPassword'}
+                        type='password'
+                    />}
+                    <div className='mt-5 flex items-center justify-center'>
+                        {isRegister && (
+                            <div className=' flex mr-10'>
+                                <div className="role_1 mr-10">
+                                    <input  type="radio" name="options" value="option1" />
+                                    <label  htmlFor="option1">Khách hàng</label> 
+                                </div>
+                                <div className="role_2 ml-10">
+                                    <input  type="radio" name="options" value="option2" />
+                                    <label  htmlFor="option2">Cho thuê </label>
+                                </div>
+                            </div>
+                     
+                        )}
+                    </div> 
                     <Button
                         text={isRegister ? 'Đăng kí' : 'Đăng nhập'}
                         bgColor='bg-secondary1'
